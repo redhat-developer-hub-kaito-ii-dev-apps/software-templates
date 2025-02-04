@@ -7,4 +7,4 @@ commonLabels:
 resources:
   - ${{values.component_id}}-deploy.yaml
   - ${{values.component_id}}-service.yaml
-  - ${{values.component_id}}-namespace.yaml
+  - ${{values.component_id}}-route.yaml
