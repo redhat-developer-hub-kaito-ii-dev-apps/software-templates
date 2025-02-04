@@ -76,6 +76,9 @@ spec:
         allowedHosts: ["github.com"]
         description: This is ${{ parameters.component_id }}
         repoUrl: ${{ parameters.repoUrl }}
+        collaborators:
+          - team: ${{ (parameters.owner | parseEntityRef).name }}
+            access: admin
 
     - id: register
       name: Register
