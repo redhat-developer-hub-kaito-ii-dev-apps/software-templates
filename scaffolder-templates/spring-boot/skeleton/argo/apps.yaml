@@ -12,5 +12,5 @@ spec:
     kustomize:
       namespace: ${{values.component_id}}
     path: kustomize/
-    repoURL: ${{values.destination}}
+    repoURL: ${{ values.destination.host + '/' + values.destination.owner + '/' + values.destination.repo}
     targetRevision: HEAD
