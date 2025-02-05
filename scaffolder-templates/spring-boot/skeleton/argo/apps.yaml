@@ -11,6 +11,6 @@ spec:
   source:
     kustomize:
       namespace: ${{values.component_id}}
-    path: kustomize/
+    path: kustomize/overlays/dev
     repoURL: ${{ values.destination.host + '/' + values.destination.owner + '/' + values.destination.repo}
     targetRevision: HEAD
