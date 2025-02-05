@@ -9,6 +9,8 @@ spec:
     server: https://kubernetes.default.svc
   project: ${{values.component_id}}
   source:
+    kustomize:
+      namespace: ${{values.component_id}}
     path: kustomize/
     repoURL: ${{values.destination}}
     targetRevision: HEAD
