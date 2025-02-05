@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @SpringBootApplication
-public class SpringBootDockerApplication {
+public class ${{values.component_id}} {
 
     @RequestMapping("/")
         public String home() {
@@ -16,7 +16,7 @@ public class SpringBootDockerApplication {
     }
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringBootDockerApplication.class, args);
+		SpringApplication.run(${{values.component_id}}.class, args);
 	}
 
 }
