@@ -1,0 +1,48 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: argocd-template
+  title: Add ArgoCD to an existing project
+  description: Add ArgoCD to an existing project
+  tags:
+    - recommended
+    - argocd
+spec:
+  owner: janus-authors
+  system: janus-idp
+  type: service
+
+  parameters:
+    - title: Provide information about the existing component
+      required:
+#       - orgName
+        - repoName
+      properties:
+#       orgName:
+#         title: Organization Name
+#         type: string
+        repoName:
+          title: Repository Name
+          type: string
+    - title: Provide information about the ArgoCD deployment
+      required:
+        - namespace
+      properties:
+        namespace:
+          title: Namespace
+          type: string
+          default: system:janus-idp
+          description: The namespace for deploying resources
+  steps:
+    - id: createArgocdResources
+      name: Create the ArgoCD Resources
+      action: argocd:create-resources
+      input:
+        appName: ${{ parameters.repoName }}
+        # Hardcoded value because this is kept as a secret on the server to allow forks to easily change the value
+        argoInstance: argo.apps.hpe.example.com
+        namespace: ${{ parameters.namespace }}
+        repoUrl: https://github.com/redhat-developer-hub-kaito-ii-dev-apps/spring
+        labelValue: ${{ parameters.repoName }}
+        path: argo
+
